@@ -16,16 +16,19 @@ def classify_video(video_path):
 
         #classify the object
         classifier = MobileNetClassifier()
-        preprocessing = preprocess_batch(frames,target_size = config, INPUT_SIZE)
+        preprocessing = preprocess_batch(
+    frames,
+    target_size=config.INPUT_SIZE
+)
         prediction = classifier.predict(preprocessing)
 
         #results
         print("result summary")
         print_results_summary(prediction,  len(frames))
 
-        if _name_ = '_main_':
-            if len(sys.argv) <2:
-                print("python inference")
-                sys.exist(1)
+if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        print("python inference")
+        sys.exit(1)
 
-                classify_video(sys.argv[1])
+    classify_video(sys.argv[1])
